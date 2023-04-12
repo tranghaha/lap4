@@ -1,0 +1,110 @@
+package Lab5caitien;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class DanhSach {
+
+    ArrayList<String> dsn = new ArrayList<>();
+    Scanner sc = new Scanner(System.in);
+    public void menu(){
+
+        int chosse;
+
+        do{
+            System.out.println("--------");
+            System.out.println("1. Nhap danh sach ho ten");
+            System.out.println("2. Xuat danh sach vua nhap");
+            System.out.println("3. Xuat danh sach ngau nhien");
+            System.out.println("4. Sap xep giam dan va xuat danh sach");
+            System.out.println("5. tim va xoa ho ten nhap tu ban phim");
+            System.out.println("6. Thoat chuong trinh");
+            System.out.print("Nhap: ");
+            chosse = sc.nextInt();
+
+            switch(chosse){
+                case 1:
+                    Nhapdanhsach();
+                    break;
+                case 2:
+                    xuatdanhsach();
+                    break;
+                case 3:
+                    xuatNgauNhien();
+                    break;
+                case 4:
+                    sapxep();
+                    break;
+                case 5:
+                    timVaXoa();
+                    break;
+                default:
+                    if(chosse != 6){
+                        System.out.println("Vui long nhap lai chuc nang");
+                    }else{
+                        System.out.println("Thoat chuong trinh");
+                    }
+            }
+
+        }while(chosse != 6);
+
+    }
+
+    public void Nhapdanhsach(){
+         System.out.println("Vui long dien thong tin ho va ten");
+         sc.nextLine();
+        while(true){
+            System.out.print("Nhap ho va ten: ");
+            String HoVaTen = sc.nextLine();
+                if(HoVaTen.isEmpty()){
+                    System.out.println("Nhap thanh cong");
+                    break;
+                }
+            dsn.add(HoVaTen);
+        }
+    }
+
+    public void xuatdanhsach(){
+        for (String x : dsn) {
+            System.out.println(x);
+        }
+    }
+
+    public void xuatNgauNhien(){
+        Collections.shuffle(dsn);
+        xuatdanhsach();
+    }
+
+    public void sapxep(){
+        Collections.sort(dsn);
+        Collections.reverse(dsn);
+        xuatdanhsach();
+    }
+
+    public void timVaXoa(){
+        sc.nextLine();
+        System.out.print("Nhap vao ten can tim va xoa no: ");
+        String hoVaTen = sc.nextLine();
+        for (String t : dsn) {
+            if(t.indexOf(hoVaTen)>=0){
+                System.out.println(t);
+            }
+        }
+        for (String x : dsn) {
+            if(x.equalsIgnoreCase(hoVaTen)){
+                dsn.remove(x);
+                System.out.println("Xoa oke");
+                break;
+            }
+        }
+        xuatdanhsach();
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        DanhSach d = new DanhSach();
+
+        d.menu();
+    }
+}
