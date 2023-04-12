@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+	public class Main {
+	    public static void main(String[] args) {
+	        Scanner scanner = new Scanner(System.in);
+
+	        System.out.print("Nhập họ và tên: ");
+	        String fullName = scanner.nextLine();
+
+	        // Tìm vị trí của ký tự trắng đầu tiên và cuối cùng
+	        int firstSpaceIndex = fullName.indexOf(' ');
+	        int lastSpaceIndex = fullName.lastIndexOf(' ');
+
+	        // Lấy họ, tên đệm và tên
+	        String firstName = fullName.substring(lastSpaceIndex + 1);
+	        String middleName = fullName.substring(firstSpaceIndex + 1, lastSpaceIndex);
+	        String lastName = fullName.substring(0, firstSpaceIndex);
+
+	        // In ra màn hình theo định dạng yêu cầu
+	        System.out.println("Ho: " + lastName.toUpperCase());
+	        System.out.println("Ten dem: " + middleName);
+	        System.out.println("Ten: " + firstName.toUpperCase());
+	    }
+	}
