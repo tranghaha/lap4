@@ -1,0 +1,80 @@
+package Lab4;
+
+import java.util.Scanner;
+
+public class SanPham {
+	private static final double ThueNhapKhau = 0;
+	private String tenSp;
+	private double donGia;
+	private double giamGia;
+
+	public SanPham() {
+	}
+
+	public SanPham(String tenSp, double donGia, double giamGia) {
+		this.tenSp = tenSp;
+		this.donGia = donGia;
+		this.giamGia = giamGia;
+	}
+
+	public String getTenSp() {
+		return tenSp;
+	}
+
+	public void setTenSp(String tenSp) {
+		this.tenSp = tenSp;
+	}
+
+	public double getDonGia() {
+		return donGia;
+	}
+
+	public void setDonGia(double donGia) {
+		this.donGia = donGia;
+	}
+
+	public double getGiamGia() {
+		return giamGia;
+	}
+
+	public void setGiamGia(double giamGia) {
+		this.giamGia = giamGia;
+	}
+
+	@Override
+	public String toString() {
+		return "SanPham [tenSp=" + tenSp + ", donGia=" + donGia + ", giamGia=" + giamGia + "thueNhapKhau="+getThueNhapKhau()+"]";
+	}
+	private double getThueNhapKhau() {
+		return 0.1*this.donGia;
+	}
+	
+	
+	public void nhap() {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("nhập tên sản phẩm:");
+		this.setTenSp(sc.nextLine());
+		System.out.println("nhập đơn giá");
+		this.setDonGia(sc.nextDouble());
+		System.out.println("nhập giảm giá");
+		this.setGiamGia(sc.nextDouble());
+	}
+	
+	public SanPham(String tenSp, double donGia) {
+		this.tenSp=tenSp;
+		this.donGia=donGia;
+	}
+}
+package Lab4;
+
+public class test {
+public static void main(String[] args) {
+	SanPham sp1=new SanPham();
+	sp1.nhap();
+	System.out.println(sp1);
+	
+	SanPham sp2=new SanPham("Nhi",5);
+	
+	System.out.println(sp2);
+}
+}
